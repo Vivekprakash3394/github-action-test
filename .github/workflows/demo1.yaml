@@ -1,0 +1,8 @@
+name: my-test-workflow-1
+on: push
+jobs:
+  my-test-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: my-test-workflow-1-step-1
+        run: echo "fisrt my-test-workflow-1-step-1"
