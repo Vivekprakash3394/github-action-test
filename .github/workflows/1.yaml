@@ -1,0 +1,10 @@
+name: first-workflow
+on: workflow_dispatch
+jobs:
+  hello-print:
+    runs-on: ubunut-latest
+    steps:
+      - name: print hello step
+        run: echo "Hello from print hello step"
+      - name: print bye step
+        run: echo "Bye from print bye step"
