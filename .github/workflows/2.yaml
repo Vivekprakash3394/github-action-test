@@ -1,0 +1,11 @@
+# Running Multi-Line Shell Commands
+name: Mutli Line Print Workflow
+on: workflow_dispatch
+jobs:
+  Multi-line-print-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: multi-line-step
+        run: |
+          echo "First Line"
+          echo "Second Line"
