@@ -1,0 +1,15 @@
+name: Update Firmware Access Key Id
+
+on: workflow_dispatch
+
+jobs:
+  update-key:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Update appsettings.json with Firmware Access Key Id
+        run: |
+          sed -i 's|${FIRMWARE_S3_ACCESS_KEY_ID}|${{ secrets.FIRMWARE_S3_ACCESS_KEY_ID }}|g' abc/src/host/appsettings.json
+      - name: Print appsettings.json
+        run: cat abc/src/host/appsettings.json
