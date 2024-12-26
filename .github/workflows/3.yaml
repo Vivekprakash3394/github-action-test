@@ -1,0 +1,21 @@
+name: user authentication
+on: workflow_dispatch
+jobs:
+  test-user:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check GitHub user authorization
+        run: |
+          authorized=false
+          for user in $(echo "${{ secrets.USER_PERMISSION }}" | tr ',' '\n'); do
+              if [[ "${{ github.actor }}" == "$user" ]]; then
+                  authorized=true
+                  break
+              fi
+          done
+
+          if [[ "$authorized" == "false" ]]; then
+              echo "Unauthorized user: ${{ github.actor }}"
+              exit 1
+          fi
+          echo "Authorized user: ${{ github.actor }}"
